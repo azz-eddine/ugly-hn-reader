@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { Pagination } from 'react-bootstrap'
+import { Nav, Pagination } from 'react-bootstrap'
 import {HN_TOPSTORIES_URL, HN_NEWSTORIES_URL, HN_BESTSTORIES_URL, DEBUG} from "../constants/constants"
 import {Item} from './Item'
 import {Stories} from '../libs/stories'
@@ -34,11 +34,20 @@ export const List = () => {
 
   return (
     <>
-      <ul className="list-inline">
-        <li className="list-inline-item" key="1"><a href="#/" onClick={() => changeSource(HN_TOPSTORIES_URL)}>Top Stories</a></li>
-        <li className="list-inline-item" key="2"><a href="#/" onClick={() => changeSource(HN_NEWSTORIES_URL)}>New Stories</a></li>
-        <li className="list-inline-item" key="3"><a href="#/" onClick={() => changeSource(HN_BESTSTORIES_URL)}>Best Stories</a></li>
-      </ul>
+      <Nav
+        activeKey="#/top-stories"
+        onSelect={(selectedKey) => changeSource(`${selectedKey}`)}
+      >
+        <Nav.Item>
+          <Nav.Link href="#/top-stories" eventKey={HN_TOPSTORIES_URL}>Top Stories</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#/new-stories" eventKey={HN_NEWSTORIES_URL}>New Stories</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#/best-stories" eventKey={HN_BESTSTORIES_URL}>Best Stories</Nav.Link>
+        </Nav.Item>
+      </Nav>
       <ul>
         {storiesToShow.map((item) => <Item item={item} key={item} />)}
       </ul>

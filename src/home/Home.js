@@ -9,7 +9,7 @@ function Home() {
         <Container>
           <Row>
             <Col>
-              <h1>HN Reader</h1>
+              <h1>Ugly HN Reader</h1>
             </Col>
           </Row>
         </Container>
@@ -26,7 +26,9 @@ function Home() {
       <footer>
         <Container>
           <Row>
-            <Col>-</Col>
+            <Col>
+              <p><small>Really Ugly @2020</small></p>
+            </Col>
           </Row>
         </Container>  
       </footer>
