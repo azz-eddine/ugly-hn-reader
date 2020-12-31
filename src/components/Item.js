@@ -12,12 +12,10 @@ export const Item = ({item}) => {
   }, [])
 
   return (
-    <Media key={story.id} as="li" className="shadow-sm p-3 mb-3 bg-white rounded">
+    <Media key={story.id} as="li" className="shadow-sm p-3 pb-1 mb-2 bg-white rounded">
       <Media.Body>
-        <h5>({story.score}) <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a></h5>
-        <p>
-          {story.text}
-        </p>
+        <h6>({story.score}) <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a></h6>
+        {story.text && <p>{story.text}</p>}
       </Media.Body>
     </Media>
   )

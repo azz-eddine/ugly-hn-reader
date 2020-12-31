@@ -1,28 +1,29 @@
 import {List} from '../components/List'
+import {Container, Row, Col} from 'react-bootstrap'
 
 function Home() {
   return (
     <>
       <header>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <h1 className="display-1">Ugly HN Reader</h1>
-            </div>
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <Col>
+              <h2 className="display-2">Ugly HN Reader</h2>
+            </Col>
+          </Row>
+        </Container>
       </header>
       <main>
         <List />
       </main>
       <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col">
+        <Container>
+          <Row>
+            <Col>
               <p className="text-center"><small>Really Ugly @2020</small></p>
-            </div>
-          </div>
-        </div>  
+            </Col>
+          </Row>
+        </Container>
       </footer>
     </>
   );

@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react'
-import { Nav, Pagination } from 'react-bootstrap'
-import {HN_TOPSTORIES_URL, HN_NEWSTORIES_URL, HN_BESTSTORIES_URL, DEBUG} from "../constants/constants"
+import {Container, Row, Col, Spinner, Nav, Pagination} from 'react-bootstrap'
+import {HN_TOPSTORIES_URL, HN_NEWSTORIES_URL, HN_BESTSTORIES_URL} from "../constants/constants"
 import {Item} from './Item'
 import {Stories} from '../libs/stories'
 
 export const List = () => {
+  const [loading, setLoding] = useState(false)
   const [stories, setStories] = useState([])
   const [storiesToShow, setStoriesToShow] = useState([])
   const [page, setPage] = useState(1)
@@ -13,7 +14,6 @@ export const List = () => {
   const [source, setSource] = useState(HN_TOPSTORIES_URL)
 
   const changeSource = (source) => {
-    DEBUG && console.debug(source)
     requestPage(1)
     setSource(source)
   }
@@ -30,18 +30,20 @@ export const List = () => {
   }
   
   useEffect(() => {
+    setLoding(true)
     Stories(source)
       .then(ts => {
         setStories(ts)
         setStoriesToShow(ts.slice(pageStart, pageEnd))
+        setLoding(false)
       })
   }, [source, pageStart, pageEnd])
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col">
+      <Container>
+        <Row>
+          <Col>
             <Nav
               variant="pills"
               className="mb-5"
@@ -62,21 +64,27 @@ export const List = () => {
                 <Nav.Link href="#/best-stories" eventKey={HN_BESTSTORIES_URL}>Best Stories</Nav.Link>
               </Nav.Item>
             </Nav>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col">
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            {loading ? 
+            <Spinner className="" size="sm" variant="primary" animation="grow" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+            :
             <ul className="list-unstyled mb-5">
               {storiesToShow.map((item) => <Item item={item} key={item} />)}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col">
+            </ul>         
+            }
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
             <Pagination className="justify-content-center">
               {/* <Pagination.First />
               <Pagination.Prev /> */}
@@ -98,9 +106,9 @@ export const List = () => {
               {/* <Pagination.Next />
               <Pagination.Last /> */}
             </Pagination>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   )
 }
