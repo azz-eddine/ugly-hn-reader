@@ -8,7 +8,7 @@ function Home() {
         <Container>
           <Row>
             <Col>
-              <h2 className="display-2">Ugly HN Reader</h2>
+              <h1>Ugly HN Reader</h1>
             </Col>
           </Row>
         </Container>

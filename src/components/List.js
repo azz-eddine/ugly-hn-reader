@@ -46,7 +46,7 @@ export const List = () => {
           <Col>
             <Nav
               variant="pills"
-              className="mb-5"
+              className="mb-2"
               defaultActiveKey={HN_TOPSTORIES_URL} as="ul"
               onSelect={(selectedKey) => {
                 changeSource(`${selectedKey}`)
