@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {Media} from 'react-bootstrap'
 import {Story} from '../libs/story'
 import { extractStory } from '../utils/utils'
 
@@ -11,16 +12,13 @@ export const Item = ({item}) => {
   }, [])
 
   return (
-    <div key={story.id} className="card">
-      <div className="card-body">
-        <h5 className="card-title"><a href={story.url} target="_blank" rel="noreferrer">{story.title}</a></h5>
-        <p className="card-text">
+    <Media key={story.id} as="li" className="shadow-sm p-3 mb-3 bg-white rounded">
+      <Media.Body>
+        <h5>({story.score}) <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a></h5>
+        <p>
           {story.text}
-          <br/>Published {story.time}
-          <br/>By {story.by}
-          <br/>Score {story.score}
         </p>
-      </div>
-    </div>
+      </Media.Body>
+    </Media>
   )
 }
