@@ -18,14 +18,14 @@ export const Item = ({item}) => {
           <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a>
         </h6>
         <span class="text-muted">
-          {story.score} Pts{` `}
+          <b>{story.score}</b> Pts{` `}
         </span>
         <span class="text-muted">
-          By @{story.by}{` `}
+          By <b>@{story.by}</b>{` `}
         </span>
         {story.kids &&
         <span class="text-muted">
-          {story.kids.length} Comments{` `}
+          <b>{story.kids.length}</b> Comments{` `}
         </span>
         }
         {story.text && <p>{story.text}</p>}
