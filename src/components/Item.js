@@ -15,7 +15,7 @@ export const Item = ({item}) => {
     <Media key={story.id} as="li" className="shadow-sm p-3 pb-1 mb-2 bg-white rounded">
       <Media.Body>
         <h6>
-          <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a>
+          <a href={story.url} target="_blank" rel="noreferrer">{story.title}</a> <small>{story.url && story.url.replace('http://','').replace('https://','').split(/[/?#]/)[0]}</small>
         </h6>
         <span class="text-muted">
           <b>{story.score}</b> Pts{` `}
