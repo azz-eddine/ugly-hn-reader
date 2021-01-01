@@ -19,9 +19,15 @@ export const Item = ({item}) => {
         </h6>
         <span class="text-muted">
           {story.score} Pts{` `}
+        </span>
+        <span class="text-muted">
           By @{story.by}{` `}
+        </span>
+        {story.kids &&
+        <span class="text-muted">
           {story.kids.length} Comments{` `}
         </span>
+        }
         {story.text && <p>{story.text}</p>}
       </Media.Body>
     </Media>
