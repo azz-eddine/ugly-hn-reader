@@ -20,14 +20,14 @@ export const Item = ({item}) => {
         <span class="text-muted">
           <b>{story.score}</b> Pts{` `}
         </span>
-        <span class="text-muted">
-          By <b>@{story.by}</b>{` `}
-        </span>
         {story.kids &&
         <span class="text-muted">
           <b>{story.kids.length}</b> Comments{` `}
         </span>
         }
+        <span class="text-muted">
+          By <b>@{story.by}</b>{` `}
+        </span>
         {story.text && <p>{story.text}</p>}
       </Media.Body>
     </Media>
